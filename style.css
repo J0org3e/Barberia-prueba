@@ -649,32 +649,29 @@ footer {
   }
 }
 @media (max-width: 768px) {
-  /* Forzamos el contenedor a que ocupe el ancho y permita el ajuste */
+  /* 1. Ajustar el contenedor de navegación */
   .nav-container {
-    flex-direction: column !important;
-    padding: 10px 5px !important;
-    text-align: center;
-  }
-  
-  /* Eliminamos cualquier restricción que impida que se rompan las líneas */
-  .nav-links {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px 15px !important; /* espacio vertical y horizontal */
-    width: 100% !important;
-    margin-top: 10px !important;
-    white-space: normal !important; /* IMPORTANTE: esto evita que se queden en una línea */
+    flex-direction: column !important; /* Fuerza a poner logo arriba y links abajo */
+    padding: 10px !important;
   }
 
-  .nav-links a {
-    font-size: 0.95rem !important; /* Un poco más pequeño para que no se desborde */
-    padding: 5px 0;
+  /* 2. Ajustar la lista de enlaces */
+  .nav-links {
+    flex-wrap: wrap !important; /* Permite que los links salten a la siguiente línea */
+    justify-content: center !important;
+    gap: 10px 20px !important; /* Espacio vertical y horizontal */
+    margin-top: 10px !important;
+    padding: 0 !important;
   }
-  
-  /* Ocultamos el logo si es demasiado grande en móvil */
-  .logo {
-    font-size: 1.5rem !important;
-    margin-bottom: 5px;
+
+  /* 3. Reducir el tamaño de los enlaces en móvil */
+  .nav-links a {
+    font-size: 1.1rem !important;
+    letter-spacing: 0px !important;
+  }
+
+  /* 4. Ocultar los sociales que no caben */
+  .nav-socials {
+    display: none !important;
   }
 }

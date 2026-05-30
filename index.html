@@ -2,10 +2,6 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1%STUDIO | Barbería</title>
   
@@ -152,10 +148,26 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const video = document.getElementById('heroVideo');
+    
+    // Forzamos el estado silenciado (requisito de los navegadores)
     video.muted = true;
-    video.play().catch(function(error) {
-      console.log("Autoplay bloqueado por el navegador, se requiere interacción.");
-    });
+    
+    // Intentamos reproducir
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+        // La reproducción automática empezó correctamente
+      }).catch(error => {
+        // Si el navegador bloquea la reproducción (común en modo ahorro de energía),
+        // escuchamos el primer toque del usuario para iniciar el vídeo.
+        document.addEventListener('touchstart', function() {
+          video.play();
+        }, {once: true});
+        
+        console.log("Autoplay bloqueado. Iniciará al primer toque.");
+      });
+    }
   });
 </script>
 

@@ -158,26 +158,39 @@
   const v1 = document.getElementById('video1');
   const v2 = document.getElementById('video2');
 
-  function cambiarVideo(actual, siguiente) {
+  // Configuración de tiempos (ajusta si sabes cuánto duran exactamente)
+  // Cambiaremos cuando falte 0.5s para el final
+  const duracionV1 = 10; // Pon aquí la duración en segundos del primer video
+  const duracionV2 = 10; // Pon aquí la duración en segundos del segundo video
+
+  function saltar(actual, siguiente) {
     actual.classList.remove('active-video');
     actual.pause();
     actual.currentTime = 0;
     
     siguiente.classList.add('active-video');
-    // Forzamos la carga y reproducción
-    siguiente.load(); 
-    siguiente.play().catch(err => console.log("Bloqueo de reproducción detectado", err));
+    siguiente.play().catch(e => console.log(e));
   }
 
-  // Eventos de fin de video
-  v1.addEventListener('ended', () => cambiarVideo(v1, v2));
-  v2.addEventListener('ended', () => cambiarVideo(v2, v1));
+  // Usamos 'timeupdate' que es el evento más fiable en móviles
+  v1.addEventListener('timeupdate', () => {
+    if (v1.currentTime >= (v1.duration - 0.5)) {
+       saltar(v1, v2);
+    }
+  });
 
-  // Desbloqueo tras la primera interacción del usuario
-  document.addEventListener('click', () => {
-    v1.play();
-    v2.play();
-  }, { once: true });
+  v2.addEventListener('timeupdate', () => {
+    if (v2.currentTime >= (v2.duration - 0.5)) {
+       saltar(v2, v1);
+    }
+  });
+
+  // Autoplay forzado inicial
+  window.onload = () => {
+    v1.play().catch(() => {
+        document.addEventListener('click', () => { v1.play(); }, { once: true });
+    });
+  };
 </script>
 </body>
 </html>

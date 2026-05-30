@@ -41,7 +41,7 @@
 
 <header class="hero">
   <video id="video1" class="hero-video active-video" autoplay muted playsinline>
-   <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
+    <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
   
   <video id="video2" class="hero-video" muted playsinline>
@@ -158,39 +158,33 @@
   const v1 = document.getElementById('video1');
   const v2 = document.getElementById('video2');
 
-  // Configuración de tiempos (ajusta si sabes cuánto duran exactamente)
-  // Cambiaremos cuando falte 0.5s para el final
-  const duracionV1 = 10; // Pon aquí la duración en segundos del primer video
-  const duracionV2 = 10; // Pon aquí la duración en segundos del segundo video
-
-  function saltar(actual, siguiente) {
+  function cambiarVideo(actual, siguiente) {
+    // Primero ocultamos el actual
     actual.classList.remove('active-video');
     actual.pause();
     actual.currentTime = 0;
     
+    // Luego mostramos el siguiente
     siguiente.classList.add('active-video');
     siguiente.play().catch(e => console.log(e));
   }
 
-  // Usamos 'timeupdate' que es el evento más fiable en móviles
+  // Monitorización constante: cuando falte menos de 0.2s, forzamos el cambio
   v1.addEventListener('timeupdate', () => {
-    if (v1.currentTime >= (v1.duration - 0.5)) {
-       saltar(v1, v2);
+    if (v1.duration - v1.currentTime < 0.2) {
+      if (v2.classList.contains('active-video') === false) {
+        cambiarVideo(v1, v2);
+      }
     }
   });
 
   v2.addEventListener('timeupdate', () => {
-    if (v2.currentTime >= (v2.duration - 0.5)) {
-       saltar(v2, v1);
+    if (v2.duration - v2.currentTime < 0.2) {
+      if (v1.classList.contains('active-video') === false) {
+        cambiarVideo(v2, v1);
+      }
     }
   });
-
-  // Autoplay forzado inicial
-  window.onload = () => {
-    v1.play().catch(() => {
-        document.addEventListener('click', () => { v1.play(); }, { once: true });
-    });
-  };
 </script>
 </body>
 </html>

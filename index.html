@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Playfair+Display:ital,wght@0,700;1,700&family=Teko:wght@500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .hero-video { display: none; }
+    .hero-video.active-video { display: block; }
+  </style>
 </head>
 <body>
 
@@ -35,8 +40,12 @@
 </nav>
 
 <header class="hero">
-  <video id="heroVideo" class="hero-video active-video" autoplay muted playsinline poster="imagen-portada.jpg">
-    <source id="videoSource" src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
+  <video id="video1" class="hero-video active-video" autoplay muted playsinline poster="imagen-portada.jpg">
+    <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+  
+  <video id="video2" class="hero-video" muted playsinline>
+    <source src="9737998-uhd_3840_2160_24fps.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
@@ -146,32 +155,23 @@
 </footer>
 
 <script>
-  const video = document.getElementById('heroVideo');
-  const source = document.getElementById('videoSource');
-  
-  const videoFiles = [
-    "4177803-hd_1920_1080_30fps.mp4", 
-    "9737998-uhd_3840_2160_24fps.mp4"
-  ];
-  
-  let index = 0;
+  const v1 = document.getElementById('video1');
+  const v2 = document.getElementById('video2');
 
-  // Lógica para cambiar al siguiente video cuando termina
-  video.addEventListener('ended', () => {
-    index = (index + 1) % videoFiles.length;
-    source.src = videoFiles[index];
-    video.load();
-    video.play();
-  });
+  function alternarVideos(actual, siguiente) {
+    actual.classList.remove('active-video');
+    actual.pause();
+    actual.currentTime = 0;
+    siguiente.classList.add('active-video');
+    siguiente.play();
+  }
 
-  // Autoplay inicial seguro para móviles
+  v1.addEventListener('ended', () => alternarVideos(v1, v2));
+  v2.addEventListener('ended', () => alternarVideos(v2, v1));
+
   window.addEventListener('load', () => {
-    video.muted = true;
-    video.play().catch(error => {
-      console.log("Autoplay bloqueado, se activará al tocar la pantalla.");
-      document.body.addEventListener('click', () => {
-        video.play();
-      }, { once: true });
+    v1.play().catch(() => {
+      document.body.addEventListener('click', () => { v1.play(); }, { once: true });
     });
   });
 </script>

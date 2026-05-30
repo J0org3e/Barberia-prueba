@@ -648,3 +648,21 @@ footer {
     padding: 30px 20px;
   }
 }
+/* Corrección para móviles en la navegación */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column; /* Apila el logo y los enlaces */
+    padding: 15px;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;       /* Permite que los links salten de línea */
+    justify-content: center;
+    gap: 15px;             /* Menos espacio entre enlaces */
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;     /* Reduce el tamaño del texto en móvil */
+  }
+}

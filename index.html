@@ -158,17 +158,38 @@
   const v1 = document.getElementById('video1');
   const v2 = document.getElementById('video2');
 
+  // Cambiar video con transición suave
   function alternarVideos(actual, siguiente) {
-    actual.classList.remove('active-video');
-    actual.pause();
-    actual.currentTime = 0;
     siguiente.classList.add('active-video');
     siguiente.play();
+    
+    // Pequeño retraso para ocultar el anterior y evitar el flash negro
+    setTimeout(() => {
+      actual.classList.remove('active-video');
+      actual.pause();
+      actual.currentTime = 0;
+    }, 50); // 50ms es suficiente para que el siguiente ya esté visible
   }
 
-  v1.addEventListener('ended', () => alternarVideos(v1, v2));
-  v2.addEventListener('ended', () => alternarVideos(v2, v1));
+  // Usamos 'timeupdate' en lugar de 'ended' para cambiar 0.2s antes de que acabe
+  // Esto elimina el salto negro que ocurre en el segundo exacto en que termina el video
+  v1.addEventListener('timeupdate', function() {
+    if (this.duration - this.currentTime < 0.2) {
+      if (!v2.classList.contains('active-video')) {
+        alternarVideos(v1, v2);
+      }
+    }
+  });
 
+  v2.addEventListener('timeupdate', function() {
+    if (this.duration - this.currentTime < 0.2) {
+      if (!v1.classList.contains('active-video')) {
+        alternarVideos(v2, v1);
+      }
+    }
+  });
+
+  // Autoplay inicial
   window.addEventListener('load', () => {
     v1.play().catch(() => {
       document.body.addEventListener('click', () => { v1.play(); }, { once: true });

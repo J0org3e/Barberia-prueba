@@ -10,22 +10,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Playfair+Display:ital,wght@0,700;1,700&family=Teko:wght@500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Efecto de aparición fluida añadido al CSS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="nav-container">
-    <div class="logo">
-      <span class="logo-red">ELITE</span>BARBER
-    </div>
-
+    <div class="logo"><span class="logo-red">ELITE</span>BARBER</div>
     <ul class="nav-links">
       <li><a href="#" class="active">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+      <li><a href="#ubicacion">Dónde estamos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-
     <div class="nav-socials">
       <a href="https://instagram.com" target="_blank" class="social-text">Instagram</a>
       <a href="https://facebook.com" target="_blank" class="social-text">Facebook</a>
@@ -37,13 +46,10 @@
   <video id="video1" class="hero-video active-video" autoplay muted playsinline>
     <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
-
   <video id="video2" class="hero-video" muted playsinline>
     <source src="9737998-uhd_3840_2160_24fps.mp4" type="video/mp4">
   </video>
-
   <div class="overlay"></div>
-
   <div class="hero-content">
     <h1>BARBERÍA ELITE</h1>
     <p class="hero-tagline">Estilo, precisión y actitud</p>
@@ -51,90 +57,76 @@
   </div>
 </header>
 
-<section id="servicios" class="section-services">
+<section id="servicios" class="section-services reveal">
   <div class="container">
     <h2 class="section-title">Servicios</h2>
-    
     <div class="grid">
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-rebornfilmes-35556916.jpg" alt="Corte moderno" class="card-img img-corte">
-          <div class="card-img-overlay"></div>
-        </div>
-        <div class="card-content">
-          <h3>Corte moderno</h3>
-          <p>Fade, taper, clásicos y personalizados adaptados a tus facciones.</p>
-          <div class="card-price">Desde 15€</div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-rebornfilmes-35556916.jpg" alt="Corte moderno" class="card-img img-corte"><div class="card-img-overlay"></div></div>
+        <div class="card-content"><h3>Corte moderno</h3><p>Fade, taper, clásicos y personalizados adaptados a tus facciones.</p><div class="card-price">Desde 15€</div></div>
       </div>
-
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-juan-hurtado-326726608-13810876.jpg" alt="Perfilado de barba" class="card-img img-barba">
-          <div class="card-img-overlay"></div>
-        </div>
-        <div class="card-content">
-          <h3>Barba</h3>
-          <p>Perfilado profesional con navaja, ritual de toalla caliente y aceites.</p>
-          <div class="card-price">Desde 10€</div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-juan-hurtado-326726608-13810876.jpg" alt="Barba" class="card-img img-barba"><div class="card-img-overlay"></div></div>
+        <div class="card-content"><h3>Barba</h3><p>Perfilado profesional con navaja, ritual de toalla caliente y aceites.</p><div class="card-price">Desde 10€</div></div>
       </div>
-
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-kawerodriguess-19664889.jpg" alt="Tratamientos" class="card-img img-tratamientos">
-          <div class="card-img-overlay"></div>
-        </div>
-        <div class="card-content">
-          <h3>Tratamientos</h3>
-          <p>Cuidado facial, exfoliación profunda y mascarillas premium.</p>
-          <div class="card-price">Desde 12€</div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-kawerodriguess-19664889.jpg" alt="Tratamientos" class="card-img img-tratamientos"><div class="card-img-overlay"></div></div>
+        <div class="card-content"><h3>Tratamientos</h3><p>Cuidado facial, exfoliación profunda y mascarillas premium.</p><div class="card-price">Desde 12€</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="sobre-nosotros" class="section-about">
+<section id="sobre-nosotros" class="section-about reveal">
   <div class="about-backdrop"></div>
   <div class="container relative-z">
     <h2 class="section-title">Sobre nosotros</h2>
-    <p class="about-text">
-      En <strong>Barbería Elite</strong> combinamos técnica, estilo y experiencia para ofrecer cortes de nivel profesional. 
-      No somos solo una barbería; somos un espacio urbano diseñado para el hombre moderno que cuida su identidad. 
-      Cada cliente es único, cada estilo también.
-    </p>
+    <p class="about-text">En <strong>Barbería Elite</strong> combinamos técnica, estilo y experiencia para ofrecer cortes de nivel profesional. No somos solo una barbería; somos un espacio urbano diseñado para el hombre moderno que cuida su identidad.</p>
   </div>
 </section>
 
-<section class="section-reviews">
+<section class="section-reviews reveal">
   <div class="container">
     <h2 class="section-title">Opiniones</h2>
-    
     <div class="grid">
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>“El mejor corte de mi vida. La atención al detalle con la navaja y el degrade es sencillamente espectacular.”</p>
+        <p>“El mejor corte de mi vida. La atención al detalle es sencillamente espectacular.”</p>
         <span class="review-author">- Carlos Mendoza</span>
       </div>
-
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>“Ambiente increíble, buena música y un trato perfecto. Mi barbería de confianza desde el primer día.”</p>
+        <p>“Ambiente increíble, buena música y un trato perfecto.”</p>
         <span class="review-author">- Javi Ruiz</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contacto" class="section-contact">
+<section id="ubicacion" class="section-map reveal">
+  <div class="container">
+    <h2 class="section-title">Dónde estamos</h2>
+    <div class="map-wrapper" style="max-width: 600px; margin: 0 auto;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12326.269371925187!2d-0.42194550000002035!3d39.43390709999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f6e86d93f6b%3A0xf4d20de1afbfeb8b!2s1%25%20STUDIO!5e0!3m2!1ses!2ses!4v1780147938693!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section-contact reveal">
   <div class="container">
     <h2 class="section-title">Contacto</h2>
-    
     <div class="contact-box">
       <div class="contact-info">
-        <p><strong>📍 Ubicación:</strong> Valencia, España</p>
-        <p><strong>📞 Teléfono:</strong> 600 000 000</p>
+        <p><strong>📍 Ubicación:</strong> Av. Francesc Ciscar, 16, 46200</p>
+        <p><strong>📞 Teléfono:</strong> +34 961 17 38 73</p>
         <p><strong>📩 Email:</strong> barberiaelite@email.com</p>
       </div>
       <a class="btn btn-booksy" href="https://booksy.com/es-es#ba_s=seo" target="_blank">Reservar en Booksy</a>
@@ -142,44 +134,39 @@
   </div>
 </section>
 
-<section class="newsletter-section">
+<section class="newsletter-section reveal">
   <div class="newsletter-container">
     <div class="newsletter-left">
-      <span class="discount-badge">CONSIGUE UN DESCUENTO DEL 15% EN TU PRÓXIMO SERVICIO PARA NUEVOS CLIENTES</span>
-      <h2 class="newsletter-title">Suscríbete para estar siempre al tanto de todas las promociones especiales, descuentos, eventos, novedades...</h2>
+      <span class="discount-badge">CONSIGUE UN 15% DE DESCUENTO</span>
+      <h2 class="newsletter-title">Suscríbete para promociones exclusivas.</h2>
     </div>
     <div class="newsletter-right">
       <form class="newsletter-form" action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST">
-        <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="Introduce tu correo..." required>
+        <input type="email" name="email" class="form-input" placeholder="Introduce tu correo..." required>
         <button type="submit" class="btn-subscribe">SUSCRIBIRME</button>
       </form>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Barbería Elite. Todos los derechos reservados.</p>
-</footer>
+<footer><p>© 2026 Barbería Elite. Todos los derechos reservados.</p></footer>
 
 <script>
-  const vid1 = document.getElementById('video1');
-  const vid2 = document.getElementById('video2');
+  // Control de videos
+  const vid1 = document.getElementById('video1'), vid2 = document.getElementById('video2');
+  vid1.onended = () => { vid1.classList.remove('active-video'); vid2.classList.add('active-video'); vid2.play(); };
+  vid2.onended = () => { vid2.classList.remove('active-video'); vid1.classList.add('active-video'); vid1.play(); };
 
-  vid1.onended = function() {
-    vid1.classList.remove('active-video');
-    vid2.classList.add('active-video');
-    vid2.currentTime = 0;
-    vid2.play();
-  };
-
-  vid2.onended = function() {
-    vid2.classList.remove('active-video');
-    vid1.classList.add('active-video');
-    vid1.currentTime = 0;
-    vid1.play();
-  };
+  // Efecto fluido de aparición
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+    }
+  }
+  window.addEventListener("scroll", reveal);
 </script>
-
 </body>
 </html>

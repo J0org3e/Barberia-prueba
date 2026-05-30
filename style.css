@@ -648,21 +648,33 @@ footer {
     padding: 30px 20px;
   }
 }
-/* Corrección para móviles en la navegación */
 @media (max-width: 768px) {
+  /* Forzamos el contenedor a que ocupe el ancho y permita el ajuste */
   .nav-container {
-    flex-direction: column; /* Apila el logo y los enlaces */
-    padding: 15px;
+    flex-direction: column !important;
+    padding: 10px 5px !important;
+    text-align: center;
   }
   
+  /* Eliminamos cualquier restricción que impida que se rompan las líneas */
   .nav-links {
-    flex-wrap: wrap;       /* Permite que los links salten de línea */
-    justify-content: center;
-    gap: 15px;             /* Menos espacio entre enlaces */
-    margin-top: 10px;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px 15px !important; /* espacio vertical y horizontal */
+    width: 100% !important;
+    margin-top: 10px !important;
+    white-space: normal !important; /* IMPORTANTE: esto evita que se queden en una línea */
   }
 
   .nav-links a {
-    font-size: 1.1rem;     /* Reduce el tamaño del texto en móvil */
+    font-size: 0.95rem !important; /* Un poco más pequeño para que no se desborde */
+    padding: 5px 0;
+  }
+  
+  /* Ocultamos el logo si es demasiado grande en móvil */
+  .logo {
+    font-size: 1.5rem !important;
+    margin-bottom: 5px;
   }
 }

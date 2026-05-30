@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .hero-video { display: none; }
+    .hero-video { display: none; width: 100%; height: 100vh; object-fit: cover; }
     .hero-video.active-video { display: block; }
   </style>
 </head>
@@ -20,10 +20,7 @@
 
 <nav class="navbar">
   <div class="nav-container">
-    <div class="logo">
-      <span class="logo-red">1%</span>STUDIO
-    </div>
-
+    <div class="logo"><span class="logo-red">1%</span>STUDIO</div>
     <ul class="nav-links">
       <li><a href="#" class="active">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
@@ -31,7 +28,6 @@
       <li><a href="#ubicacion">Dónde estamos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-
     <div class="nav-socials">
       <a href="https://instagram.com" target="_blank" class="social-text">Instagram</a>
       <a href="https://facebook.com" target="_blank" class="social-text">Facebook</a>
@@ -40,11 +36,11 @@
 </nav>
 
 <header class="hero">
-  <video id="video1" class="hero-video active-video" autoplay muted playsinline loop preload="auto" poster="imagen-portada.jpg">
+  <video id="video1" class="hero-video active-video" autoplay muted playsinline loop preload="auto">
     <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
   
-  <video id="video2" class="hero-video" muted playsinline loop preload="auto">
+  <video id="video2" class="hero-video" autoplay muted playsinline loop preload="auto">
     <source src="9737998-uhd_3840_2160_24fps.mp4" type="video/mp4">
   </video>
 
@@ -62,35 +58,26 @@
     <h2 class="section-title">Servicios</h2>
     <div class="grid">
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-rebornfilmes-35556916.jpg" alt="Corte moderno" class="card-img img-corte" loading="lazy">
-          <div class="card-img-overlay"></div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-rebornfilmes-35556916.jpg" alt="Corte moderno" loading="lazy"></div>
         <div class="card-content">
           <h3>Corte moderno</h3>
-          <p>Fade, taper, clásicos y personalizados adaptados a tus facciones.</p>
+          <p>Fade, taper, clásicos y personalizados.</p>
           <div class="card-price">Desde 15€</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-juan-hurtado-326726608-13810876.jpg" alt="Perfilado de barba" class="card-img img-barba" loading="lazy">
-          <div class="card-img-overlay"></div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-juan-hurtado-326726608-13810876.jpg" alt="Barba" loading="lazy"></div>
         <div class="card-content">
           <h3>Barba</h3>
-          <p>Perfilado profesional con navaja, ritual de toalla caliente y aceites.</p>
+          <p>Perfilado profesional con navaja y ritual.</p>
           <div class="card-price">Desde 10€</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-image-wrapper">
-          <img src="pexels-kawerodriguess-19664889.jpg" alt="Tratamientos" class="card-img img-tratamientos" loading="lazy">
-          <div class="card-img-overlay"></div>
-        </div>
+        <div class="card-image-wrapper"><img src="pexels-kawerodriguess-19664889.jpg" alt="Tratamientos" loading="lazy"></div>
         <div class="card-content">
           <h3>Tratamientos</h3>
-          <p>Cuidado facial, exfoliación profunda y mascarillas premium.</p>
+          <p>Cuidado facial y exfoliación.</p>
           <div class="card-price">Desde 12€</div>
         </div>
       </div>
@@ -99,13 +86,9 @@
 </section>
 
 <section id="sobre-nosotros" class="section-about">
-  <div class="about-backdrop"></div>
-  <div class="container relative-z">
+  <div class="container">
     <h2 class="section-title">Sobre nosotros</h2>
-    <p class="about-text">
-      En <strong>1%STUDIO</strong> combinamos técnica, estilo y experiencia para ofrecer cortes de nivel profesional. 
-      No somos solo una barbería; somos un espacio urbano diseñado para el hombre moderno que cuida su identidad. 
-    </p>
+    <p class="about-text">En <strong>1%STUDIO</strong> combinamos técnica y estilo profesional.</p>
   </div>
 </section>
 
@@ -115,12 +98,12 @@
     <div class="grid">
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>“El mejor corte de mi vida. La atención al detalle es sencillamente espectacular.”</p>
+        <p>“El mejor corte de mi vida.”</p>
         <span class="review-author">- Carlos Mendoza</span>
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>“Ambiente increíble, buena música y un trato perfecto.”</p>
+        <p>“Ambiente increíble y trato perfecto.”</p>
         <span class="review-author">- Javi Ruiz</span>
       </div>
     </div>
@@ -131,7 +114,7 @@
   <div class="container">
     <h2 class="section-title">Dónde estamos</h2>
     <div class="map-wrapper">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.0526017835154!2d-0.3475267237276527!3d39.45892581297597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60488e07a30c57%3A0x600c3b88950d859e!2sAv.+de+Francia%2C+55%2C+46023+Valencia!5e0!3m2!1ses!2ses!4v1620000000000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.347585226462!2d-0.3396773846399684!3d39.45864117948585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60488f7c9e03f9%3A0x67a84365b26b3e86!2sAv.+de+Fran%C3%A7a%2C+55%2C+46023+Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1563539121804!5m2!1ses!2ses" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -140,17 +123,14 @@
   <div class="container">
     <h2 class="section-title">Contacto</h2>
     <div class="contact-box">
-      <div class="contact-info">
-        <p><strong>📍 Ubicación:</strong> Av. de França, 55, 46023 València</p>
-        <p><strong>📞 Teléfono:</strong> +34 961 17 38 73</p>
-        <p><strong>📩 Email:</strong> contacto@1porcientostudio.com</p>
-      </div>
-      <a class="btn btn-booksy" href="https://booksy.com/es-es#ba_s=seo" target="_blank">Reservar en Booksy</a>
+      <p>📍 Av. de França, 55, València</p>
+      <p>📞 +34 961 17 38 73</p>
+      <a class="btn" href="https://booksy.com/es-es#ba_s=seo" target="_blank">Reservar en Booksy</a>
     </div>
   </div>
 </section>
 
-<footer style="background: #050505; color: #666666; text-align: center; padding: 40px 20px;">
+<footer style="background: #050505; color: #666; text-align: center; padding: 40px 20px;">
   <p>© 2026 1%STUDIO. Todos los derechos reservados.</p>
 </footer>
 
@@ -158,38 +138,21 @@
   const v1 = document.getElementById('video1');
   const v2 = document.getElementById('video2');
 
-  function prepararVideo(video) {
-    video.muted = true;
-    video.playsInline = true;
-    video.play().catch(() => console.log("Autoplay bloqueado"));
+  function alternarVideos(actual, siguiente) {
+    siguiente.classList.add('active-video');
+    siguiente.play().catch(e => console.log("Espera de interacción"));
+    setTimeout(() => {
+      actual.classList.remove('active-video');
+      actual.pause();
+      actual.currentTime = 0;
+    }, 500);
   }
 
-  // Intentar iniciar al cargar
-  window.addEventListener('load', () => {
-    prepararVideo(v1);
-    prepararVideo(v2);
-  });
+  v1.addEventListener('ended', () => alternarVideos(v1, v2));
+  v2.addEventListener('ended', () => alternarVideos(v2, v1));
 
-  // Alternar al finalizar
-  v1.addEventListener('ended', () => {
-    v1.classList.remove('active-video');
-    v2.classList.add('active-video');
-    v2.play();
-  });
-
-  v2.addEventListener('ended', () => {
-    v2.classList.remove('active-video');
-    v1.classList.add('active-video');
-    v1.play();
-  });
-
-  // Desbloqueo táctil
-  const desbloquear = () => {
-    v1.play();
-    v2.play();
-    document.removeEventListener('touchstart', desbloquear);
-  };
-  document.addEventListener('touchstart', desbloquear);
+  document.addEventListener('touchstart', () => { v1.play(); v2.play(); }, { once: true });
 </script>
+
 </body>
 </html>

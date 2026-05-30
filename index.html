@@ -35,8 +35,8 @@
 </nav>
 
 <header class="hero">
-  <video id="heroVideo" class="hero-video active-video" autoplay muted loop playsinline poster="imagen-portada.jpg">
-    <source src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
+  <video id="heroVideo" class="hero-video active-video" autoplay muted playsinline poster="imagen-portada.jpg">
+    <source id="videoSource" src="4177803-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
@@ -146,28 +146,33 @@
 </footer>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const video = document.getElementById('heroVideo');
-    
-    // Forzamos el estado silenciado (requisito de los navegadores)
-    video.muted = true;
-    
-    // Intentamos reproducir
-    const playPromise = video.play();
+  const video = document.getElementById('heroVideo');
+  const source = document.getElementById('videoSource');
+  
+  const videoFiles = [
+    "4177803-hd_1920_1080_30fps.mp4", 
+    "9737998-uhd_3840_2160_24fps.mp4"
+  ];
+  
+  let index = 0;
 
-    if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        // La reproducción automática empezó correctamente
-      }).catch(error => {
-        // Si el navegador bloquea la reproducción (común en modo ahorro de energía),
-        // escuchamos el primer toque del usuario para iniciar el vídeo.
-        document.addEventListener('touchstart', function() {
-          video.play();
-        }, {once: true});
-        
-        console.log("Autoplay bloqueado. Iniciará al primer toque.");
-      });
-    }
+  // Lógica para cambiar al siguiente video cuando termina
+  video.addEventListener('ended', () => {
+    index = (index + 1) % videoFiles.length;
+    source.src = videoFiles[index];
+    video.load();
+    video.play();
+  });
+
+  // Autoplay inicial seguro para móviles
+  window.addEventListener('load', () => {
+    video.muted = true;
+    video.play().catch(error => {
+      console.log("Autoplay bloqueado, se activará al tocar la pantalla.");
+      document.body.addEventListener('click', () => {
+        video.play();
+      }, { once: true });
+    });
   });
 </script>
 

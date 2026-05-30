@@ -158,31 +158,38 @@
   const v1 = document.getElementById('video1');
   const v2 = document.getElementById('video2');
 
-  function alternarVideos(actual, siguiente) {
-    siguiente.classList.add('active-video');
-    siguiente.play().catch(e => console.log("Espera de interacción"));
-    
-    setTimeout(() => {
-      actual.classList.remove('active-video');
-      actual.pause();
-      actual.currentTime = 0;
-    }, 500);
+  function prepararVideo(video) {
+    video.muted = true;
+    video.playsInline = true;
+    video.play().catch(() => console.log("Autoplay bloqueado"));
   }
 
-  // Usar evento 'ended' es más limpio para móviles
-  v1.addEventListener('ended', () => alternarVideos(v1, v2));
-  v2.addEventListener('ended', () => alternarVideos(v2, v1));
+  // Intentar iniciar al cargar
+  window.addEventListener('load', () => {
+    prepararVideo(v1);
+    prepararVideo(v2);
+  });
 
-  // Forzar inicio al tocar la pantalla (Desbloquea el autoplay en móvil)
-  const iniciarVideos = () => {
+  // Alternar al finalizar
+  v1.addEventListener('ended', () => {
+    v1.classList.remove('active-video');
+    v2.classList.add('active-video');
+    v2.play();
+  });
+
+  v2.addEventListener('ended', () => {
+    v2.classList.remove('active-video');
+    v1.classList.add('active-video');
+    v1.play();
+  });
+
+  // Desbloqueo táctil
+  const desbloquear = () => {
     v1.play();
     v2.play();
-    document.removeEventListener('click', iniciarVideos);
-    document.removeEventListener('touchstart', iniciarVideos);
+    document.removeEventListener('touchstart', desbloquear);
   };
-  document.addEventListener('click', iniciarVideos);
-  document.addEventListener('touchstart', iniciarVideos);
+  document.addEventListener('touchstart', desbloquear);
 </script>
-
 </body>
 </html>
